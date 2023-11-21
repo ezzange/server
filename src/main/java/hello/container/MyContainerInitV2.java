@@ -5,7 +5,6 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.HandlesTypes;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 //인터페이스의 구현체의 클래스 정보를 넘겨주는 애노테이션
 @HandlesTypes(AppInit.class)
@@ -22,7 +21,7 @@ public class MyContainerInitV2 implements ServletContainerInitializer {
             try {
                                                     //new AppInitV1Servlet()과 같은 코드
                 AppInit appInit = (AppInit) appInitClass.getDeclaredConstructor().newInstance();
-                appInit.onstartup(ctx);
+                appInit.onStartup(ctx);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
